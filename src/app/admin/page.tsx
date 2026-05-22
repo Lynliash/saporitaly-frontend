@@ -1,58 +1,76 @@
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Utensils, Carrot, MapPin, Users } from "lucide-react";
+import { PlusCircle, Book, Leaf, Map, GitMerge } from "lucide-react";
 
 export default function AdminDashboard() {
   return (
-    <div>
+    <main className="container mx-auto px-10 py-12 min-h-screen">
       <div className="mb-10 border-b border-border pb-6">
-        <h1 className="text-4xl font-headline text-foreground mb-2">Pannello di Controllo</h1>
-        <p className="text-muted-foreground">Riepilogo dei dati attualmente presenti nel database.</p>
+        <h1 className="text-4xl font-headline text-foreground mb-2">Backoffice Archivio</h1>
+        <p className="text-muted-foreground">Seleziona un modulo per gestire i dati del sistema.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-        {/* widget card */}
-        <Card className="rounded-none border-border">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Ricette Totali</CardTitle>
-            <Utensils className="w-4 h-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-4xl font-headline text-foreground">124</div>
-          </CardContent>
-        </Card>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Link href="/nuova-ricetta">
+          <Card className="rounded-none border-border hover:bg-muted/10 transition-colors cursor-pointer h-full">
+            <CardHeader>
+              <PlusCircle className="w-8 h-8 text-secondary mb-2" />
+              <CardTitle className="font-headline text-xl">Nuova Ricetta</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">Crea una nuova ricetta, definisci ingredienti essenziali e passaggi.</p>
+            </CardContent>
+          </Card>
+        </Link>
 
-        <Card className="rounded-none border-border">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Ingredienti</CardTitle>
-            <Carrot className="w-4 h-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-4xl font-headline text-foreground">842</div>
-          </CardContent>
-        </Card>
+        <Link href="/admin/ricette">
+          <Card className="rounded-none border-border hover:bg-muted/10 transition-colors cursor-pointer h-full">
+            <CardHeader>
+              <Book className="w-8 h-8 text-foreground mb-2" />
+              <CardTitle className="font-headline text-xl">Gestione Ricette</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">Modifica o elimina ricette esistenti dal database centrale.</p>
+            </CardContent>
+          </Card>
+        </Link>
 
-        <Card className="rounded-none border-border">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Utenti Registrati</CardTitle>
-            <Users className="w-4 h-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-4xl font-headline text-foreground">1.043</div>
-          </CardContent>
-        </Card>
+        <Link href="/admin/ingredienti">
+          <Card className="rounded-none border-border hover:bg-muted/10 transition-colors cursor-pointer h-full">
+            <CardHeader>
+              <Leaf className="w-8 h-8 text-foreground mb-2" />
+              <CardTitle className="font-headline text-xl">Gestione Ingredienti</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">Aggiungi nuove materie prime e gestisci i loro alias.</p>
+            </CardContent>
+          </Card>
+        </Link>
 
-        <Card className="rounded-none border-border">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Regioni Coperte</CardTitle>
-            <MapPin className="w-4 h-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-4xl font-headline text-foreground">
-              20<span className="text-lg text-muted-foreground">/20</span>
-            </div>
-          </CardContent>
-        </Card>
+        <Link href="/admin/regole">
+          <Card className="rounded-none border-border hover:bg-muted/10 transition-colors cursor-pointer h-full">
+            <CardHeader>
+              <GitMerge className="w-8 h-8 text-secondary mb-2" />
+              <CardTitle className="font-headline text-xl">Regole Sostituzione</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">Configura le logiche di rimpiazzo e i punteggi per lo Svuota Frigo.</p>
+            </CardContent>
+          </Card>
+        </Link>
+
+        <Link href="/admin/regioni">
+          <Card className="rounded-none border-border hover:bg-muted/10 transition-colors cursor-pointer h-full">
+            <CardHeader>
+              <Map className="w-8 h-8 text-foreground mb-2" />
+              <CardTitle className="font-headline text-xl">Territori</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">Gestisci le regioni a cui sono associati i manoscritti culinari.</p>
+            </CardContent>
+          </Card>
+        </Link>
       </div>
-    </div>
+    </main>
   );
 }

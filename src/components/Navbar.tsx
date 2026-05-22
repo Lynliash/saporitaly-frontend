@@ -1,13 +1,11 @@
 import Link from "next/link";
-import { Search, User, BookPlus } from "lucide-react";
+import { User, ShieldAlert, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 
 export function Navbar() {
   return (
-    // bg custom per stacco morbido dal giallino di sfondo
-    <header className="relative flex items-center justify-between px-10 py-5 border-b border-border bg-[#E8E0D0]">
-      {/* sx */}
+    <header className="relative flex items-center justify-between px-10 py-5 border-b border-border bg-[#E8E0D0] sticky top-0 z-50">
+      {/*  logo */}
       <Link href="/">
         <div className="text-3xl font-bold text-primary font-headline cursor-pointer">SaporItaly</div>
       </Link>
@@ -30,20 +28,29 @@ export function Navbar() {
 
       {/* dx */}
       <div className="flex items-center gap-3">
-        <Link href="/nuova-ricetta">
-          <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground" title="Aggiungi Ricetta">
-            <BookPlus className="w-5 h-5" />
+        <Link href="/ingredienti" title="Catalogo Ingredienti">
+          <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground rounded-none">
+            <BookOpen className="w-5 h-5" />
           </Button>
         </Link>
 
-        <Link href="/auth">
-          <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground" title="Area Personale">
+        {/* Link all'Hub dell'Admin */}
+        <Link href="/admin" title="Pannello di Controllo (Admin)">
+          <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground rounded-none">
+            <ShieldAlert className="w-5 h-5" />
+          </Button>
+        </Link>
+
+        {/* Link Area Personale*/}
+        <Link href="/auth" title="Area Personale">
+          <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground rounded-none">
             <User className="w-5 h-5" />
           </Button>
         </Link>
 
+        {/* bottone Svuota Frigo */}
         <Link href="/svuota-frigo">
-          <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold px-6 ml-2">Svuota Frigo</Button>
+          <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold px-6 ml-2 rounded-none">Svuota Frigo</Button>
         </Link>
       </div>
     </header>
