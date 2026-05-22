@@ -18,7 +18,7 @@ export default function Home() {
 
         <div className="flex flex-col justify-center lg:pl-10">
           <h2 className="text-4xl font-headline text-foreground mb-3">Esplora per Regione</h2>
-          <p className="text-muted-foreground mb-8 italic">Seleziona un territorio per accedere ai manoscritti e alle analisi organolettiche correlate.</p>
+          <p className="text-muted-foreground mb-8 italic">Seleziona un territorio per accedere alle ricette e alle analisi organolettiche correlate.</p>
 
           <div className="grid grid-cols-2 gap-4 mb-8">
             {/* bordi fissi e hover evidente */}
@@ -34,7 +34,7 @@ export default function Home() {
           {/* link corretto alla rotta regioni */}
           <Link href="/regioni" className="w-full">
             <Button variant="outline" className="w-full py-6 text-sm tracking-widest uppercase font-bold border-border text-foreground hover:bg-muted">
-              Visualizza tutte le 20 regioni 🌎
+              Visualizza tutte le 20 regioni
             </Button>
           </Link>
         </div>
@@ -45,14 +45,14 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div>
-              <p className="text-secondary text-sm font-bold tracking-widest uppercase mb-2">Approfondimenti Archivistici</p>
+              <p className="text-secondary text-sm font-bold tracking-widest uppercase mb-2">Approfondimenti</p>
               <h2 className="text-4xl font-headline text-foreground">Dalla Carta alla Tavola</h2>
             </div>
             <Link
               href="/esplora"
               className="text-secondary text-sm font-bold tracking-widest uppercase border-b-2 border-secondary pb-1 hover:text-secondary/80 transition-colors"
             >
-              Sfoglia i manoscritti
+              Sfoglia le ricette
             </Link>
           </div>
 
@@ -63,7 +63,8 @@ export default function Home() {
                 title="L'Arte della Fermentazione Appenninica"
                 description="Uno studio comparativo sui processi di conservazione dei latticini nelle comunità montane del XV secolo..."
                 badgeBg="#8B0000"
-                placeholderText="IMG Manoscritto"
+                placeholderText="IMG Ricetta
+                "
               />
             </Link>
 
