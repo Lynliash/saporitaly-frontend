@@ -1,0 +1,194 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --font-headline: var(--font-headline);
+  --font-body: var(--font-body);
+
+  /* easing: decelerazione esponenziale, niente bounce */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ombre calde (espresso, non nero puro) coerenti con la palette */
+  --shadow-2xs: 0 1px 2px 0 rgb(41 30 20 / 0.05);
+  --shadow-xs: 0 1px 3px 0 rgb(41 30 20 / 0.07);
+  --shadow-sm: 0 2px 4px -1px rgb(41 30 20 / 0.08), 0 1px 2px -1px rgb(41 30 20 / 0.06);
+  --shadow-md: 0 6px 16px -4px rgb(41 30 20 / 0.10), 0 2px 6px -2px rgb(41 30 20 / 0.06);
+  --shadow-lg: 0 12px 32px -8px rgb(41 30 20 / 0.12), 0 4px 10px -4px rgb(41 30 20 / 0.07);
+  --shadow-xl: 0 24px 50px -12px rgb(41 30 20 / 0.18);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+
+  --background: #FAF6F0;
+  --foreground: #1D1918;
+
+  /* tan caldo della testata/navbar, ora tokenizzato */
+  --surface: #E8E0D0;
+
+  --primary: #E8C170;
+  --primary-foreground: #1D1918;
+
+  --secondary: #C04000;
+  --secondary-foreground: #FFFFFF;
+
+  --muted: #EBE5DB;
+  /* schiarito a #726C62: ora 4.8:1 su crema (era 4.18:1, sotto AA) */
+  --muted-foreground: #726C62;
+
+  --destructive: #8B0000;
+  --destructive-foreground: #FFFFFF;
+
+  --accent: #E8C170;
+  --accent-foreground: #1D1918;
+
+  --card: #FFFFFF;
+  --card-foreground: #1D1918;
+  --popover: #FFFFFF;
+  --popover-foreground: #1D1918;
+  --border: #D6D2CC;
+  --input: #D6D2CC;
+  /* focus terracotta: visibile su crema (l'oro spariva, ~1.3:1) */
+  --ring: #C04000;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern", "liga", "calt";
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headline);
+  }
+  /* titoli: spezzatura bilanciata + tracking leggermente stretto sul serif display */
+  h1, h2, h3 {
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  /* selezione testo on-brand (terracotta tenue) */
+  ::selection {
+    background-color: color-mix(in oklab, var(--secondary) 22%, transparent);
+    color: var(--foreground);
+  }
+  /* scrollbar discreta e calda */
+  @media (pointer: fine) {
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    *::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    *::-webkit-scrollbar-thumb {
+      background-color: var(--border);
+      border-radius: 9999px;
+      border: 2px solid var(--background);
+    }
+    *::-webkit-scrollbar-thumb:hover {
+      background-color: var(--muted-foreground);
+    }
+  }
+}
+
+/* skeleton shimmer: caricamento più fluido del semplice pulse */
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: color-mix(in oklab, var(--muted) 70%, transparent);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, #ffffff 55%, transparent),
+    transparent
+  );
+  animation: shimmer 1.6s infinite;
+}
+
+/* rispetto preferenze di moto ridotto: niente choreography forzata */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .skeleton::after {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
