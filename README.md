@@ -2,8 +2,8 @@
 
 Interfaccia editoriale della cucina regionale italiana: esplori le ricette per regione, leggi il dettaglio, usi lo **svuotafrigo** e — da admin — gestisci l'archivio.
 
-**Live demo:** <https://saporitaly.vercel.app> · _(placeholder — da sostituire con l'URL Vercel)_
-**Backend:** [saporitaly-backend](../saporitaly-backend)
+**Live demo:** <https://saporitaly-frontend.vercel.app/> · _(placeholder — da sostituire con l'URL Vercel)_
+**Backend:** [saporitaly-backend](https://saporitaly-backend.onrender.com)
 
 ---
 
@@ -33,10 +33,10 @@ pnpm dev                    # http://localhost:3000
 
 ### Variabili d'ambiente (`.env.local`)
 
-| Variabile | A cosa serve |
-|-----------|--------------|
-| `NEXT_PUBLIC_API_URL` | URL del backend (locale: `http://localhost:8000`) |
-| `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` | Cloud name Cloudinary (upload immagini) |
+| Variabile                              | A cosa serve                                      |
+| -------------------------------------- | ------------------------------------------------- |
+| `NEXT_PUBLIC_API_URL`                  | URL del backend (locale: `http://localhost:8000`) |
+| `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME`    | Cloud name Cloudinary (upload immagini)           |
 | `NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET` | Upload preset Cloudinary (Signing Mode: Unsigned) |
 
 L'upload immagini (Cloudinary) è opzionale: senza le due variabili puoi sempre incollare un URL. Setup dettagliato in [`src/lib/upload.ts`](src/lib/upload.ts).
@@ -49,9 +49,9 @@ L'upload immagini (Cloudinary) è opzionale: senza le due variabili puoi sempre 
 
 ### Account di test (dal seed del backend)
 
-| Ruolo | Email | Password |
-|-------|-------|----------|
-| Admin | `admin@saporitaly.it` | `admin123` |
+| Ruolo | Email                 | Password      |
+| ----- | --------------------- | ------------- |
+| Admin | `admin@saporitaly.it` | `admin123`    |
 | Base  | `demo@saporitaly.it`  | `password123` |
 
 ## Struttura
