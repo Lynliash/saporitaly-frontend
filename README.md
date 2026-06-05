@@ -2,8 +2,8 @@
 
 Interfaccia editoriale della cucina regionale italiana: esplori le ricette per regione, leggi il dettaglio, usi lo **svuotafrigo** e — da admin — gestisci l'archivio.
 
-**Live demo:** <https://saporitaly-frontend.vercel.app/> · _(placeholder — da sostituire con l'URL Vercel)_
-**Backend:** [saporitaly-backend](https://saporitaly-backend.onrender.com)
+**Live demo:** <https://saporitaly-frontend.vercel.app/>
+> 🔙 **[Clicca qui per visualizzare la Repository del Backend](https://github.com/Lynliash/saporitaly-backend)**
 
 ---
 
